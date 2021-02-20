@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
 module "smmaws_vpc_dev" {
   source = "git::git@github.com:smarchman/smmaws-modules.git//networking/vpc?ref=v0.0.2"
   # VPC Info
