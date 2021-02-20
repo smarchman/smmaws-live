@@ -40,8 +40,8 @@ module "smmaws_vpc_dev" {
 
 data "aws_vpc" "smmaws_vpc_data" {
   filter {
-    name   = "tag:Name"
-    values = ["smmaws-vpc-dev"]
+    name   = "tag:environment"
+    values = ["development"]
   }
   depends_on = [module.smmaws_vpc_dev]
 }
