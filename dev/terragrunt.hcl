@@ -7,8 +7,6 @@ remote_state {
   }
   config = {
     bucket = "smmaws-dev-terraform-state"
-
-
     key = "${path_relative_to_include()}/terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true

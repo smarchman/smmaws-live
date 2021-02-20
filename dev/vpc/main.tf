@@ -1,19 +1,9 @@
-#terraform {
-#  backend "s3" {
-#    bucket         = "smmaws-dev-terraform-state"
-#    key            = "global/vpc/terraform.tfstate"
-#    region         = "us-east-1"
-#    dynamodb_table = "smmaws-dev-terraform-locks"
-#    encrypt        = "true"
-#  }
-#}
-
 provider "aws" {
   region = "us-east-1"
 }
 
 module "smmaws_vpc_dev" {
-  source = "git::git@github.com:smarchman/smmaws-modules.git//networking/vpc?ref=v0.0.1"
+  source = "git::git@github.com:smarchman/smmaws-modules.git//networking/vpc?ref=v0.0.2"
   # VPC Info
   vpc_cidr                 = "10.100.0.0/16"
   vpc_enable_dns_hostnames = "true"
@@ -22,6 +12,7 @@ module "smmaws_vpc_dev" {
   vpc_owner                = "smarchman"
   vpc_tenancy              = "default"
   vpc_terraformed          = "yes"
+  vpc_terragrunt           = "true"
   # Public Subnet Info
   subnet_public_1_az          = "us-east-1a"
   subnet_public_1_cidr        = "10.100.100.0/22"
