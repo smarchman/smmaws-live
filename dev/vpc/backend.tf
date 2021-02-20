@@ -4,7 +4,7 @@ terraform {
     bucket         = "smmaws-dev-terraform-state"
     dynamodb_table = "smmaws-dev-terraform-locks"
     encrypt        = true
-    key            = "./terraform.tfstate"
+    key            = "vpc/terraform.tfstate"
     region         = "us-east-1"
   }
 }
