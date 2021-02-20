@@ -1,12 +1,12 @@
-terraform {
-  backend "s3" {
-    bucket         = "smmaws-dev-terraform-state"
-    key            = "global/vpc/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "smmaws-dev-terraform-locks"
-    encrypt        = "true"
-  }
-}
+#terraform {
+#  backend "s3" {
+#    bucket         = "smmaws-dev-terraform-state"
+#    key            = "global/vpc/terraform.tfstate"
+#    region         = "us-east-1"
+#    dynamodb_table = "smmaws-dev-terraform-locks"
+#    encrypt        = "true"
+#  }
+#}
 
 provider "aws" {
   region = "us-east-1"
