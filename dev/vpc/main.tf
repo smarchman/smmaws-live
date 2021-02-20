@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 module "smmaws_vpc_dev" {
-  source = "../../../smmaws-modules/networking/vpc"
+  source = "git::git@github.com:smarchman/smmaws-modules.git//networking/vpc?ref=v0.0.1"
   # VPC Info
   vpc_cidr                 = "10.100.0.0/16"
   vpc_enable_dns_hostnames = "true"
