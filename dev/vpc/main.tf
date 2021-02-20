@@ -1,5 +1,5 @@
 module "smmaws_vpc_dev" {
-  source = "git::git@github.com:smarchman/smmaws-modules.git//networking/vpc?ref=v0.0.2"
+  source = "git::git@github.com:smarchman/smmaws-modules.git//networking/vpc?ref=v0.0.4"
   # VPC Info
   vpc_cidr                 = "10.100.0.0/16"
   vpc_enable_dns_hostnames = "true"
@@ -9,6 +9,7 @@ module "smmaws_vpc_dev" {
   vpc_tenancy              = "default"
   vpc_terraformed          = "yes"
   vpc_terragrunt           = "true"
+  vpc_environment          = "development"
   # Public Subnet Info
   subnet_public_1_az          = "us-east-1a"
   subnet_public_1_cidr        = "10.100.100.0/22"
@@ -34,4 +35,18 @@ module "smmaws_vpc_dev" {
   # Internet Gateway Info
   igw_name       = "smmaws_igw_dev"
   rt_public_name = "smmaws_rt_public_dev"
+
+}
+
+data "aws_vpc" "smmaws_vpc_data" {
+  filter {
+    name   = "tag:Name"
+    values = ["smmaws-vpc-dev"]
+  }
+  depends_on = [module.smmaws_vpc_dev]
+}
+
+output "testoutput" {
+
+  value = data.aws_vpc.smmaws_vpc_data
 }
